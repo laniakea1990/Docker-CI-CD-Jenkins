@@ -15,7 +15,7 @@
         "anchors", 
         "include-codeblock", 
         "emphasize", 
-        "splitter", 
+        "-splitter", 
         "sectionx", 
         "anchor-navigation-ex",
         "todo",

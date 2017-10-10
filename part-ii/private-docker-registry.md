@@ -17,8 +17,11 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 
 ```-d：后台运行
 -p：将容器的5000端口映射到宿主机的5000端口  
+
 --restart：docker服务重启后总是重启此容器  
+
 --name：容器的名称  
+
 -v：将容器内的/tmp/registry映射到宿主机的/opt/data/registry目录
 ```
 
@@ -26,9 +29,20 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 
 ```bash
 sudo docker pull busybox    //从DockerHub拉取测试镜像
+
 sudo docker tag busybox registry_ip:5000/busybox    //给测试镜像打上私有仓库标签
+
 sudo docker push registry_ip:5000/busybox    //上传镜像至私有仓库
+
 sudo docker pull registry_ip:5000/busybox    //从私有仓库拉取镜像
+```
+
+#### 查看私有仓库镜像
+
+```
+curl -XGET http://registry:5000/v2/_catalog
+
+curl -XGET http://registry:5000/v2/image_name/tags/list
 ```
 
 

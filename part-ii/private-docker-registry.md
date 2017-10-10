@@ -7,7 +7,7 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 
 #### 下载 registry 镜像
 
-`$docker pull registry`
+`docker pull registry`
 
 #### 启动容器
 
@@ -24,4 +24,10 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 `--name：容器的名称`
 
 `-v：将容器内的/tmp/registry映射到宿主机的/opt/data/registry目录`
+
+#### 验证私有仓库功能
+
+
+
+
 

@@ -54,7 +54,7 @@ Get https://192.168.139.129:5000/v2: http: server gave HTTP response to HTTPS cl
 然后重启docker
 
 ```
-  root@localhost ~]# systemctl restart docker
+$ systemctl restart docker
 ```
 
 #### 查看私有仓库镜像

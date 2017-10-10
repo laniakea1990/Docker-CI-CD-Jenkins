@@ -95,7 +95,9 @@ docker run -d -it -p 8080:8080 --restart=always --name registry-web-console --li
 
 #### wen端查看私有仓库镜像
 
-访问:[ http://192.168.1.87:8080/](http://192.168.139.129:8080/)
+访问:[ http://192.168.1.87:8080/](http://192.168.139.129:8080/)：
+
+![](/assets/import1.png)
 
 #### 
 

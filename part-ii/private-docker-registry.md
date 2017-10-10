@@ -11,5 +11,5 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 
 #### 启动容器
 
-`docker run -d --name registry-jrr -p 5000:5000--restart=always-v /opt/data/registry:/tmp/registry registry`
+`docker run -d --name registry-jrr -p 5000:5000 --restart=always-v /opt/data/registry:/tmp/registry registry`
 

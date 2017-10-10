@@ -5,15 +5,11 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 
 ## 搭建私有仓库
 
-#### 下载镜像registry
+#### 下载registry image
 
 `$docker pull registry`
 
 #### 启动容器
 
 `docker run -d --name registry-jrr -p 5000:5000 -v /opt/data/registry:/tmp/registry registry`
-
-
-
-
 

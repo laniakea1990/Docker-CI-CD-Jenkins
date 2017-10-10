@@ -10,4 +10,3 @@
   * [Jenkins Pipeline](part-ii/jenkins-pipeline.md)
   * [Jenkins master节点](part-ii/Jenkins master node.md)
   * 私有仓库的搭建
-

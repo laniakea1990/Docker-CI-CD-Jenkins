@@ -23,5 +23,5 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 
 `--name：容器的名称`
 
-`-v：将容器内的/var/lib/registry映射到宿主机的/mydata/dockerRegistry目录`
+`-v：将容器内的/tmp/registry映射到宿主机的/opt/data/registry目录`
 

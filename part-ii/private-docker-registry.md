@@ -37,7 +37,7 @@ sudo docker push registry_ip:5000/busybox    //上传镜像至私有仓库
 sudo docker pull registry_ip:5000/busybox    //从私有仓库拉取镜像
 ```
 
-#### 会出现的push失败
+#### 可能出现的push错误
 
 ```
 $ docker push 192.168.139.129:5000/busybox

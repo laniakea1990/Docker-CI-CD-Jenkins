@@ -101,5 +101,9 @@ docker run -d -it -p 8080:8080 --restart=always --name registry-web-console --li
 
 #### 
 
+## 其他
+
+此处的私有仓库还没有把用户认证模块加进去，后面继续改进
+
 
 

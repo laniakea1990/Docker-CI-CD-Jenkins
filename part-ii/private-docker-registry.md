@@ -79,5 +79,11 @@ root@ubuntu:/home/jrr# curl -XGET http://192.168.139.129:5000/v2/maven/tags/list
 $ docker pull hyper/docker-registry-web
 ```
 
+#### 启动容器
+
+```
+docker run -d -it -p 8080:8080 --restart=always --name registry-web-console --link registry-jrr -e REGISTRY_URL=http://192.168.139.129:5000/v2 -e REGISTRY_NAME=192.168.139.129:5000 hyper/docker-registry-web
+```
+
 
 

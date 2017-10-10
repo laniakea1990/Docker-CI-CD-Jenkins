@@ -89,7 +89,7 @@ docker run -d -it -p 8080:8080 --restart=always --name registry-web-console --li
 
 ```
 -it:以交互模式运行
---link：链接其它容器(registry-srv)，在此容器中，使用registry-srv等同于registry-srv容器的局域网地址
+--link：链接其它容器(registry-jrr)，在此容器中，使用registry-jrr等同于registry-jrr容器的局域网地址
 -e：设置环境变量
 ```
 

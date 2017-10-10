@@ -10,7 +10,6 @@
         "-highlight", 
         "-livereload", 
         "search-plus", 
-        "simple-page-toc", 
         "prism", 
         "prism-themes", 
         "anchors", 

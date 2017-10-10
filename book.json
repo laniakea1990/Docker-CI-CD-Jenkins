@@ -1,0 +1,57 @@
+{
+    "title": "Implement CI/CD with Docker and Jenkins", 
+    "description": "利用Docker及Jenkins Pipeline实现微服务的CI/CD", 
+    "author": "jrr", 
+    "output.name": "site", 
+    "language": "zh-hans", 
+    "plugins": [
+        "-lunr", 
+        "-search", 
+        "-highlight", 
+        "-livereload", 
+        "search-plus", 
+        "simple-page-toc", 
+        "prism", 
+        "prism-themes", 
+        "anchors", 
+        "include-codeblock", 
+        "emphasize", 
+        "splitter", 
+        "expandable-chapters-small", 
+        "sectionx", 
+        "anchor-navigation-ex",
+        "todo",
+        "disqus"
+    ], 
+    "pluginsConfig": {
+        "theme-default": {
+            "showLevel": true
+        }, 
+        "prism": {
+            "css": [
+                "prism-themes/themes/prism-atom-dark.css"
+            ]
+        }, 
+        "include-codeblock": {
+            "template": "ace", 
+            "unindent": true, 
+            "edit": true
+        }, 
+        "simple-page-toc": {
+            "maxDepth": 3, 
+            "skipFirstH1": true
+        }, 
+        "anchor-navigation-ex": {
+            "isRewritePageTitle": false, 
+            "tocLevel1Icon": "fa fa-hand-o-right", 
+            "tocLevel2Icon": "fa fa-hand-o-right", 
+            "tocLevel3Icon": "fa fa-hand-o-right"
+        }, 
+        "sectionx": {
+            "tag": "b"
+        },
+        "disqus": {
+            "shortName": "laniakea"
+        }
+    }
+}

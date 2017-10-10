@@ -28,5 +28,4 @@ sudo docker pull busybox
 sudo docker tag busybox registry_ip:5000/busybox
 sudo docker push registry_ip:5000/busybox
 sudo docker pull registry_ip:5000/busybox
-
 ``

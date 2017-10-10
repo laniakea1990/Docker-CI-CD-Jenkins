@@ -45,6 +45,12 @@ The push refers to a repository [192.168.139.129:5000/busybox]
 Get https://192.168.139.129:5000/v2: http: server gave HTTP response to HTTPS client
 ```
 
+解决方法：需要修改/etc/docker/daemon.json文件，在文件中添加：
+
+```
+"{ "insecure-registries":["192.168.139.129:5000"] }"
+```
+
 #### 查看私有仓库镜像
 
 ```
@@ -56,8 +62,6 @@ root@ubuntu:/home/jrr# curl -XGET http://192.168.139.129:5000/v2/docker-cicd/tag
 root@ubuntu:/home/jrr# curl -XGET http://192.168.139.129:5000/v2/maven/tags/list
 {"name":"maven","tags":["3.5-alpine"]}
 ```
-
-
 
 
 

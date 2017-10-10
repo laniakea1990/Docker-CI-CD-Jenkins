@@ -2,8 +2,7 @@
 
 ## Part I
 
-* [Introduction](README.md)
-* [Docker 微服务 CI/CD简介](1-docker-wei-fu-wu-ci-cd-jian-jie.md)
+* [Docker 微服务 CI/CD简介](README.md)
 
 ## Part II
 

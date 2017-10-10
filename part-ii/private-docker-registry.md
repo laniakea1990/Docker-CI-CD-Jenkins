@@ -5,7 +5,7 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 
 ## 搭建私有仓库
 
-#### 下载registry镜像
+#### 下载 registry 镜像
 
 `$docker pull registry`
 

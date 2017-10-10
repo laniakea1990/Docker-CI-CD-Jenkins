@@ -6,6 +6,13 @@
 
 ## Part II
 
-* 
+* 基于Docker及Jenkins的CI/CD的实现
+
+  * Jenkins Pipeline
+
+  * Jenkins master节点
+
+  * 私有仓库的搭建
+
 
 

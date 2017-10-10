@@ -71,5 +71,13 @@ root@ubuntu:/home/jrr# curl -XGET http://192.168.139.129:5000/v2/maven/tags/list
 
 ## 搭建WEB服务
 
+私有仓库搭建好了，怎么查看仓库里的镜像，搭建一个web服务，查看修改image比较方便。
+
+#### 下载镜像
+
+```
+$ docker pull hyper/docker-registry-web
+```
+
 
 

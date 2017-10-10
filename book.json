@@ -34,11 +34,7 @@
             "template": "ace", 
             "unindent": true, 
             "edit": true
-        }, 
-        "simple-page-toc": {
-            "maxDepth": 3, 
-            "skipFirstH1": true
-        }, 
+        },  
         "anchor-navigation-ex": {
             "isRewritePageTitle": false, 
             "tocLevel1Icon": "fa fa-hand-o-right", 

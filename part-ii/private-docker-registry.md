@@ -13,3 +13,15 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 
 `docker run -d --name registry-jrr -p 5000:5000 --restart=always -v /opt/data/registry:/tmp/registry registry`
 
+简单解释：
+
+`-d：后台运行`
+
+`-p：将容器的5000端口映射到宿主机的5000端口`
+
+`--restart：docker服务重启后总是重启此容器`
+
+`--name：容器的名称`
+
+`-v：将容器内的/var/lib/registry映射到宿主机的/mydata/dockerRegistry目录`
+

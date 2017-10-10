@@ -7,6 +7,9 @@
 ## Part II
 
 * [基于Docker及Jenkins的CI/CD的实现](2-ji-yu-docker-ji-jenkins-de-ci-cd-de-shi-xian.md)
+  * Jenkins Pipeline
+  * Jenkins master节点
+  * 私有仓库的搭建
 
 
 

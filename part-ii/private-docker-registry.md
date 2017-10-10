@@ -27,8 +27,8 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 ```bash
 sudo docker pull busybox    //从DockerHub拉取测试镜像
 sudo docker tag busybox registry_ip:5000/busybox    //给测试镜像打上私有仓库标签
-sudo docker push registry_ip:5000/busybox
-sudo docker pull registry_ip:5000/busybox
+sudo docker push registry_ip:5000/busybox    //上传镜像至私有仓库
+sudo docker pull registry_ip:5000/busybox    //从私有仓库拉取镜像
 ```
 
 

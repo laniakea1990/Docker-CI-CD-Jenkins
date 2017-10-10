@@ -9,7 +9,7 @@
         "-search", 
         "-highlight", 
         "-livereload", 
-        "search-plus", 
+        "-search-plus", 
         "prism", 
         "prism-themes", 
         "-anchors", 

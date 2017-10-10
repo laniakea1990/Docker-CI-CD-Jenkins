@@ -40,9 +40,13 @@ sudo docker pull registry_ip:5000/busybox    //从私有仓库拉取镜像
 #### 查看私有仓库镜像
 
 ```
-curl -XGET http://registry:5000/v2/_catalog
+root@ubuntu:/home/jrr# curl -XGET http://192.168.139.129:5000/v2/_catalog
+{"repositories":["busybox","docker-cicd","maven","openjdk"]}
 
-curl -XGET http://registry:5000/v2/image_name/tags/list
+root@ubuntu:/home/jrr# curl -XGET http://192.168.139.129:5000/v2/docker-cicd/tags/list
+{"name":"docker-cicd","tags":["26","22","24","21","25","23","27"]}
+root@ubuntu:/home/jrr# curl -XGET http://192.168.139.129:5000/v2/maven/tags/list
+{"name":"maven","tags":["3.5-alpine"]}
 ```
 
 

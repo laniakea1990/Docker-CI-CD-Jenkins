@@ -45,7 +45,7 @@ The push refers to a repository [192.168.139.129:5000/busybox]
 Get https://192.168.139.129:5000/v2: http: server gave HTTP response to HTTPS client
 ```
 
-解决方法：需要修改/etc/docker/daemon.json文件，在文件中添加：
+这是因为Docker在1.3.x之后默认docker registry使用的是https，为了解决这个问题，需要修改/etc/docker/daemon.json文件，在文件中添加：
 
 ```
 "{ "insecure-registries":["192.168.139.129:5000"] }"

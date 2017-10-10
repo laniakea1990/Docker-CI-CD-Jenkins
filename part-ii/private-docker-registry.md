@@ -85,5 +85,13 @@ $ docker pull hyper/docker-registry-web
 docker run -d -it -p 8080:8080 --restart=always --name registry-web-console --link registry-jrr -e REGISTRY_URL=http://192.168.139.129:5000/v2 -e REGISTRY_NAME=192.168.139.129:5000 hyper/docker-registry-web
 ```
 
+简单解释：
+
+```
+-it:以交互模式运行
+--link：链接其它容器(registry-srv)，在此容器中，使用registry-srv等同于registry-srv容器的局域网地址
+-e：设置环境变量
+```
+
 
 

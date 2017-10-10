@@ -25,11 +25,13 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 #### 验证私有仓库功能
 
 ```bash
-sudo docker pull busybox
+sudo docker pull busybox    //从DockerHub拉取测试镜像
 sudo docker tag busybox registry_ip:5000/busybox
 sudo docker push registry_ip:5000/busybox
 sudo docker pull registry_ip:5000/busybox
 ```
+
+
 
 
 

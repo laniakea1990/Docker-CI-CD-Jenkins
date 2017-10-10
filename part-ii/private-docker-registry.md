@@ -37,6 +37,14 @@ sudo docker push registry_ip:5000/busybox    //上传镜像至私有仓库
 sudo docker pull registry_ip:5000/busybox    //从私有仓库拉取镜像
 ```
 
+#### 会出现的push失败
+
+```
+$ docker push 192.168.139.129:5000/busybox
+The push refers to a repository [192.168.139.129:5000/busybox]
+Get https://192.168.139.129:5000/v2: http: server gave HTTP response to HTTPS client
+```
+
 #### 查看私有仓库镜像
 
 ```
@@ -48,6 +56,8 @@ root@ubuntu:/home/jrr# curl -XGET http://192.168.139.129:5000/v2/docker-cicd/tag
 root@ubuntu:/home/jrr# curl -XGET http://192.168.139.129:5000/v2/maven/tags/list
 {"name":"maven","tags":["3.5-alpine"]}
 ```
+
+
 
 
 

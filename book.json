@@ -16,7 +16,7 @@
         "-include-codeblock", 
         "-emphasize", 
         "-splitter", 
-        "sectionx", 
+        "-sectionx", 
         "-anchor-navigation-ex",
         "todo",
         "-disqus"

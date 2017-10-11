@@ -12,7 +12,7 @@
 
 16年4月20日，历经Alpha\(2/29\)，Beta\(3/24\)，RC\(4/7\)3个版本的迭代，Jenkins 2.0 终于正式发布。这也是Jenkins面世11年以来的首次大版本升级。
 
-Pipeline as Code是2.0的精髓所在，是帮助Jenkins实现CI\(Continuous Integration\)到CD\(Continuous Delivery\)华丽转身的关键推手。所谓Pipeline，简单来说，就是一套运行于Jenkins上的工作流框架，将原本独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂发布流程。Pipeline的实现方式是一套Groovy DSL\(类似Gradle\)，任何发布流程都可以表述为一段Groovy脚本，并且Jenkins支持从代码库直接读取脚本，从而实现了Pipeline as Code的理念。
+Pipeline as Code是Jenkins  2.0的精髓所在，是帮助Jenkins实现CI\(Continuous Integration\)到CD\(Continuous Delivery\)华丽转身的关键推手。所谓Pipeline，简单来说，就是一套运行于Jenkins上的工作流框架，将原本独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂发布流程。Pipeline的实现方式是一套Groovy DSL\(类似Gradle\)，任何发布流程都可以表述为一段Groovy脚本，并且Jenkins支持从代码库直接读取脚本，从而实现了Pipeline as Code的理念。
 
 建立持续交付流水线\(Continuous Delivery Pipeline\)是持续交付的前提。作为2.0的核心插件，Pipeline并不是一个新事物，它的前身是Workflow Plugin，而Workflow的诞生是受更早的Build Flow Plugin启发，由Nicolas De Loof于2012年4月发布第一个版本。而纵观Jenkins的几个竞争对手（Travis CI、phpci、circleci），Pipeline早已不是什么新鲜概念。可以说这次Jenkins 2.0的发布是顺势而为，同时也是大势所趋。
 

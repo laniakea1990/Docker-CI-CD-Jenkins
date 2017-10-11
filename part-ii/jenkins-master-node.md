@@ -73,7 +73,7 @@ CONTAINER ID        IMAGE                  COMMAND                  CREATED     
 
 * 验证Jenkins master节点启动，在浏览器访问 [http://192.168.139.132:8088/](http://192.168.139.132:8088/)：
 
-![](/assets/import4.png)
+#### ![](/assets/import4.png)其他补充
 
 Docker宣布在1.12版的引擎中内置编排能力，也就是 Swarm Mode，在容器之上引入了服务\(`service`\)的概念，也实验性的推出了应用栈\(`stack`\)来支持多服务应用的部署管理。但是 Docker 1.12 版本，服务的开发和操作缺乏类似`Docker Compose`工具的支持，而且由于Docker Compose v1/v2是面向容器编排设计，和Swarm Mode中的概念上有很多不同。只可以用 `docker-compose bundle` 命令将已有 `docker-compose.yml` 转换为 [`Distributed Application Bundle`](https://docs.docker.com/compose/bundles/) 才能在Swarm mode中部署，非常不便，而且更为严重的是很多功能不支持，导致很多现有编排模板无法直接使用。
 

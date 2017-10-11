@@ -31,7 +31,7 @@ root@ubuntu:/# echo "admin" | docker secret create jenkins-pass -
 mhufs3gua7yt0th8fgm5xlqli
 ```
 
-1. 使用docker stack部署服务（配置见jenkins.yml，如有必要可以修改 volume /var/jenkins\_home的挂载路径）
+2. 使用docker stack部署服务（配置见jenkins.yml，如有必要可以修改 volume /var/jenkins\_home的挂载路径）
 
 
 

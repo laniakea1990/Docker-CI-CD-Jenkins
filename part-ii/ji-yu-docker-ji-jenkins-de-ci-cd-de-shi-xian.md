@@ -16,5 +16,5 @@
 
 ![](/assets/import2.png)为了实现上图的CI/CD流程，需要搭建Jenkins master服务器、私有的Docker registry、Git服务器。
 
-对于开发人员而言，相比传统发布，需要新增工作内容是在代码目录中新增Dockerfile和Jenkinsfile两个文件。Dockerfile用于应用发布时构建应用容器镜像，Jenkinsfile用于实现Jenkins pipeline。
+对于开发人员而言，相比传统发布，需要新增工作内容是在代码目录中新增Dockerfile和Jenkinsfile两个文件。Dockerfile用于应用发布时构建应用容器镜像，Jenkinsfile用于Jenkins pipeline。
 

@@ -19,14 +19,19 @@ e38dd7110c4f: Download complete
 141c7a122953: Downloading [=>                                                 ]  2.135MB/72.74M
 ```
 
-**镜像使用方法：**
+#### **镜像使用方法**
 
 1. 设置管理员帐号密码（下面例子用户名和密码都是`admin`，可以自己调整）
 
-  
+```
+root@ubuntu:/# echo "admin" | docker secret create jenkins-user -
+vtukek9s2qqhaaief1gd9ybc2
 
+root@ubuntu:/# echo "admin" | docker secret create jenkins-pass -
+mhufs3gua7yt0th8fgm5xlqli
+```
 
-
+1. 使用docker stack部署服务（配置见jenkins.yml，如有必要可以修改 volume /var/jenkins\_home的挂载路径）
 
 
 

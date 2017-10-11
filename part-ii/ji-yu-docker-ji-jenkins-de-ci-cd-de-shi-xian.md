@@ -10,34 +10,19 @@
 
 ![](/assets/58f3b593-06a6-4c28-b579-2dc73d5d1dfc.png)上图展示了一个典型的CI/CD的工具链，Jenkins作为业内优秀的的CI/CD工具，担任整套了工具链的核心组织工作。
 
-自从15年9月底Jenkins的创始人Kohsuke Kawaguchi提出Jenkins 2.0（后称2.0）的愿景和草案之后，整个Jenkins社区为之欢欣鼓舞，不管是官方博客还是Google论坛，大家都在热烈讨论和期盼2.0的到来。16年4月20日，历经Alpha\(2/29\)，Beta\(3/24\)，RC\(4/7\)3个版本的迭代，2.0终于正式发布。这也是Jenkins面世11年以来（算上前身Hudson）的首次大版本升级。
+16年4月20日，历经Alpha\(2/29\)，Beta\(3/24\)，RC\(4/7\)3个版本的迭代，2.0终于正式发布。这也是Jenkins面世11年以来（算上前身Hudson）的首次大版本升级。
 
 Pipeline as Code是2.0的精髓所在，是帮助Jenkins实现CI\(Continuous Integration\)到CD\(Continuous Delivery\)华丽转身的关键推手。所谓Pipeline，简单来说，就是一套运行于Jenkins上的工作流框架，将原本独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂发布流程。Pipeline的实现方式是一套Groovy DSL\(类似Gradle\)，任何发布流程都可以表述为一段Groovy脚本，并且Jenkins支持从代码库直接读取脚本，从而实现了Pipeline as Code的理念。
 
 建立持续交付流水线\(Continuous Delivery Pipeline\)是持续交付的前提。作为2.0的核心插件，Pipeline并不是一个新事物，它的前身是Workflow Plugin，而Workflow的诞生是受更早的Build Flow Plugin启发，由Nicolas De Loof于2012年4月发布第一个版本。而纵观Jenkins的几个竞争对手（Travis CI、phpci、circleci），Pipeline早已不是什么新鲜概念。可以说这次Jenkins 2.0的发布是顺势而为，同时也是大势所趋。
 
-  
-
-
 如果要在更大范围探讨Pipelined的产生背景，我认为有三个层面的原因。
-
-  
-
 
 第一层面，与不断增长的发布复杂度有关，其中一个典型场景就是灰度发布。原本只有大公司才有的灰度发布，随着敏捷开发实践的广泛采用、产品迭代周期的不断缩短、数据增长理念的深入人心，越来越多的中小公司也开始这一方面的探索，这对发布的需求也从点状的CI升级到线状的CD。这是Pipeline产生的第一个原因。
 
-  
-
-
 第二层面，与应用架构的模块化演变有关，以微服务为代表，一次应用升级往往涉及到多个模块的协同发布，单个CI显然无法满足此类需求。这是Pipeline产生的第二个原因。
 
-  
-
-
 第三层面，与日益失控的CI数量有关。一方面，类似于Maven、pip、RubyGems这样的包管理工具使得有CI需求的应用呈爆发性增长，另一方面，受益于便捷的Git分支特性，即便对于同一个应用，往往也需要配置多个CI。随着CI数量的不断增长，集中式的任务配置就会成为一个瓶颈，这就需要把任务配置的职责下放到应用团队。这是Pipeline\(as Code\)产生的第三个原因。
-
-  
-
 
 先简单开个头，后续会详细介绍Pipeline的实现。
 

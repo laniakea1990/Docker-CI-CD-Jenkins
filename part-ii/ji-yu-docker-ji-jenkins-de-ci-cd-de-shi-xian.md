@@ -10,7 +10,9 @@
 
 ![](/assets/58f3b593-06a6-4c28-b579-2dc73d5d1dfc.png)上图展示了一个典型的CI/CD的工具链，Jenkins作为业内优秀的的CI/CD工具，担任整套了工具链的核心组织工作。
 
+### 基于Dokcer、Jenkins的CI/CD的实现
+
 下图展示了一个简易实现的CI/CD流程：
 
-![](/assets/import2.png)
+![](/assets/import2.png)为了实现
 

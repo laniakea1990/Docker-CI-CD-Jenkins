@@ -10,7 +10,7 @@
 
 ![](/assets/58f3b593-06a6-4c28-b579-2dc73d5d1dfc.png)上图展示了一个典型的CI/CD的工具链，Jenkins作为业内优秀的的CI/CD工具，担任整套了工具链的核心组织工作。
 
-16年4月20日，历经Alpha\(2/29\)，Beta\(3/24\)，RC\(4/7\)3个版本的迭代，Jenkins 2.0终于正式发布。这也是Jenkins面世11年以来（算上前身Hudson）的首次大版本升级。
+16年4月20日，历经Alpha\(2/29\)，Beta\(3/24\)，RC\(4/7\)3个版本的迭代，Jenkins 2.0 终于正式发布。这也是Jenkins面世11年以来的首次大版本升级。
 
 Pipeline as Code是2.0的精髓所在，是帮助Jenkins实现CI\(Continuous Integration\)到CD\(Continuous Delivery\)华丽转身的关键推手。所谓Pipeline，简单来说，就是一套运行于Jenkins上的工作流框架，将原本独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂发布流程。Pipeline的实现方式是一套Groovy DSL\(类似Gradle\)，任何发布流程都可以表述为一段Groovy脚本，并且Jenkins支持从代码库直接读取脚本，从而实现了Pipeline as Code的理念。
 

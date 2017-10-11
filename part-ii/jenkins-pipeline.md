@@ -24,6 +24,12 @@ Pipeline的几个基本概念：
 
 ![](/assets/import5.png)
 
+进入项目的配置页面，首先配置项目的自动触发：
+
+![](/assets/import7.png)接着，配置Pipeline script的来源，这里选择从git中获取：
+
+![](/assets/import8.png)
+
 ### Jenkinsfile样例
 
 ```

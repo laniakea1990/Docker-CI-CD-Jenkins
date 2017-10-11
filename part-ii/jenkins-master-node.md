@@ -57,5 +57,26 @@ secrets:
 
 * 使用docker stack部署服务（配置见jenkins.yml，如有必要可以修改 volume /var/jenkins\_home的挂载路径）
 
+```
+root@ubuntu:~# docker stack deploy -c jenkins.yml jenkins_ci_cd
+Creating network jenkins_ci_cd_default
+Creating service jenkins_ci_cd_main
+
+root@ubuntu:~# docker stack services jenkins_ci_cd
+ID                  NAME                 MODE                REPLICAS            IMAGE                  PORTS
+rycy7rhssomk        jenkins_ci_cd_main   replicated          1/1                 qinyu/jenkins:latest   *:8088->8080/tcp,*:50008->50000/tcp
+
+root@ubuntu:~# docker ps
+CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                 NAMES
+948ba8ce9806        qinyu/jenkins:latest   "/bin/tini -- /usr..."   3 minutes ago       Up 3 minutes        8080/tcp, 50000/tcp   jenkins_ci_cd_main.1.r28yjkykxi3pstvzdqomk67e9
+```
+
+|  | Docker Compose v1/v2 | Docker 1.13 |
+| :---: | :--- | :--- |
+| 启动服务 | docker-compose up -d | docker stack deploy --compose-file=docker-compose.yml |
+| 伸缩服务 | docker-compose scale xxx=n | docker service scale xxx=n |
+| 停止服务 | docker-compose down | docker stack rm |
+| 跨宿主机 | 否 | 是 |
+
 
 

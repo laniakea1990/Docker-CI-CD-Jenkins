@@ -14,5 +14,5 @@
 
 下图展示了一个简易实现的CI/CD流程，基于docker和Jenkins：
 
-![](/assets/import2.png)为了实现
+![](/assets/import2.png)为了实现上图的CI/CD流程，需要搭建Jenkins master服务器、私有的Docker registry、Git服务器
 

@@ -42,7 +42,7 @@ services:
       - 8088:8080
       - 50008:50000
     volumes:
-      - /home/raiseking/jenkins-mnt-a:/var/jenkins_home
+      - /home/jrr/jenkins-mnt:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
     secrets:
       - jenkins-user

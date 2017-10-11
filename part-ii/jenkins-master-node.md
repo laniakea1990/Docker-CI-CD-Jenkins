@@ -31,6 +31,30 @@ root@ubuntu:/# echo "admin" | docker secret create jenkins-pass -
 mhufs3gua7yt0th8fgm5xlqli
 ```
 
+* 创建jenkins.yml文件：
+
+```
+version: '3.1'
+services:
+  main:
+    image: qinyu/jenkins:latest
+    ports:
+      - 8088:8080
+      - 50008:50000
+    volumes:
+      - /home/raiseking/jenkins-mnt-a:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    secrets:
+      - jenkins-user
+      - jenkins-pass
+
+secrets:
+  jenkins-user:
+    external: true
+  jenkins-pass:
+    external: true
+```
+
 * 使用docker stack部署服务（配置见jenkins.yml，如有必要可以修改 volume /var/jenkins\_home的挂载路径）
 
 

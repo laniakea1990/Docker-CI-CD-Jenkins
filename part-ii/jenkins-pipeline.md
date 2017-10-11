@@ -14,6 +14,16 @@ Pipeline的几个基本概念：
 
 本节介绍Jenkins Pipeline的一些核心概念，并介绍在运行的Jenkins实例中定义和使用Pipelines的基础知识。
 
+### **创建Pipeline**
+
+基于前面安装的Jenkins master，进入jenkins主页：[http://192.168.139.132:8088/](http://192.168.139.132:8088/)，点击左边菜单的新建选项：
+
+![](/assets/import6.png)
+
+选择"Pipeline"类型并输入项目名：
+
+![](/assets/import5.png)
+
 ### Jenkinsfile样例
 
 ```

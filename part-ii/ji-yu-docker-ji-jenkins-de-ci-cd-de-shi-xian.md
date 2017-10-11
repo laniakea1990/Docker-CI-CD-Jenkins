@@ -48,6 +48,22 @@
 
 通过Jenkins的pipeline我们可以实现代码检出、单元测试、编译、构建、发布、测试等流程的自动化，而最终通过Jenkins的Docker插件将产出物构建成镜像，方便部署到Docker环境。
 
+#### **持续部署**
+
+持续集成让我们新的代码源源不断的构建成了镜像，这些镜像经历了单元测试，自动化测试，但还没有接受过测试团队的严格测试。Jenkins是一个强大的持续集成工具，然而持续部署并不是Jenkins的强项，但是Jenkins拥有很多强大的插件。而且我们持续集成产出的是镜像，所以持续的部署，我们只需要将镜像运行起来，或者利用第三方的容器管理平台提供的API进行部署。
+
+1、本地部署应用到Docker
+
+本地部署到Docker容器可以使用Jenkins的docker插件，下面会介绍。
+
+2、部署到远程主机的Docker、Appsoar。
+
+Docker和Appsoar都支持开启API调用。通过现有的API我们可以运行我们生成镜像版本。从而达到持续的部署最新版本。
+
+3、部署到kubernetes
+
+kubernetes除了可以通过API调用还可以在jenkins中配置kubectl的方式创建或更新deployments。
+
 ### 基于Dokcer、Jenkins的CI/CD的实现
 
 下图展示了一个简易实现的CI/CD流程，基于docker和Jenkins：

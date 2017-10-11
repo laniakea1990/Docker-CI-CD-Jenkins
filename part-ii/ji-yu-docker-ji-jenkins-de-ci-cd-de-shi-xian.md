@@ -12,7 +12,7 @@
 
 ### 基于Dokcer、Jenkins的CI/CD的实现
 
-下图展示了一个简易实现的CI/CD流程：
+下图展示了一个简易实现的CI/CD流程，基于docker和Jenkins：
 
 ![](/assets/import2.png)为了实现
 

@@ -1,0 +1,386 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>基于Docker及Jenkins的CI/CD的实现 · Implement CI/CD with Docker and Jenkins</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="jrr">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-atom-dark.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sectionx/sectionx.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="jenkins-master-node.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Part II</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="ji-yu-docker-ji-jenkins-de-ci-cd-de-shi-xian.html">
+            
+                <a href="ji-yu-docker-ji-jenkins-de-ci-cd-de-shi-xian.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    基于Docker及Jenkins的CI/CD的实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="jenkins-master-node.html">
+            
+                <a href="jenkins-master-node.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    Jenkins master node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="jenkins-pipeline.html">
+            
+                <a href="jenkins-pipeline.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    Jenkins Pipeline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="private-docker-registry.html">
+            
+                <a href="private-docker-registry.html">
+            
+                    
+                        <b>1.2.3.</b>
+                    
+                    Private docker registry
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >基于Docker及Jenkins的CI/CD的实现</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x4F20;&#x7EDF;&#x4EA4;&#x4ED8;&#x65B9;&#x6848;"><a name="&#x4F20;&#x7EDF;&#x4EA4;&#x4ED8;&#x65B9;&#x6848;" class="anchor-navigation-ex-anchor" href="#&#x4F20;&#x7EDF;&#x4EA4;&#x4ED8;&#x65B9;&#x6848;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x4F20;&#x7EDF;&#x4EA4;&#x4ED8;&#x65B9;&#x6848;" class="plugin-anchor" href="#&#x4F20;&#x7EDF;&#x4EA4;&#x4ED8;&#x65B9;&#x6848;"><i class="fa fa-link" aria-hidden="true"></i></a><strong>&#x4F20;&#x7EDF;&#x4EA4;&#x4ED8;&#x65B9;&#x6848;</strong></h3>
+<p>&#x4F20;&#x7EDF;&#x6211;&#x4EEC;&#x7684;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x6A21;&#x5F0F;&#x662F;&#x4EA7;&#x54C1;&#x8C03;&#x7814;&#x63D0;&#x51FA;&#x9700;&#x6C42;&#xFF0C;&#x5F00;&#x53D1;&#x56E2;&#x961F;&#x7814;&#x7A76;&#x51B3;&#x5B9A;&#x5F00;&#x53D1;&#x65B9;&#x6848;&#x9009;&#x578B;&#x3002;&#x7136;&#x540E;&#x5F00;&#x59CB;&#x4E00;&#x4E2A;&#x5468;&#x671F;&#x7684;&#x5F00;&#x53D1;&#xFF0C;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#x6A21;&#x5757;&#x95F4;&#x7684;&#x8054;&#x8C03;&#x3002;&#x8054;&#x8C03;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x6253;&#x5305;&#x4EA4;&#x4ED8;&#x7ED9;&#x6D4B;&#x8BD5;&#x56E2;&#x961F;&#x3002;&#x6D4B;&#x8BD5;&#x56E2;&#x961F;&#x8FDB;&#x884C;&#x7CFB;&#x7EDF;&#x6D4B;&#x8BD5;&#x6216;&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#xFF0C;&#x7136;&#x540E;&#x63D0;&#x4EA4;bug&#xFF0C;&#x5F00;&#x53D1;&#x56E2;&#x961F;&#x4FEE;&#x590D;bug&#xFF0C;&#x5468;&#x800C;&#x590D;&#x59CB;&#x3002;</p>
+<p>&#x4F20;&#x7EDF;&#x7684;&#x6A21;&#x5F0F;&#x4E2D;&#xFF0C;&#x5B58;&#x5728;&#x7740;&#x8F83;&#x591A;&#x7684;&#x4E0D;&#x786E;&#x5B9A;&#x56E0;&#x7D20;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x3001;&#x7F16;&#x8BD1;&#x73AF;&#x5883;&#x3001;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x3001;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x7B49;&#x4E0D;&#x786E;&#x5B9A;&#x56E0;&#x7D20;&#x3002;&#x4EBA;&#x4E3A;&#x4ECB;&#x5165;&#x6253;&#x5305;&#x4E2D;&#x7684;&#x4E0D;&#x786E;&#x5B9A;&#x56E0;&#x7D20;&#xFF0C;&#x7F3A;&#x4E4F;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x548C;&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#x7684;&#x6574;&#x5408;&#x3002;&#x4ECE;&#x800C;&#x5BFC;&#x81F4;&#x7684;&#x7ED3;&#x679C;&#x662F;&#xFF0C;&#x5F00;&#x53D1;-&#x6D4B;&#x8BD5;-&#x4FEE;&#x590D;&#x7684;&#x5468;&#x671F;&#x8F83;&#x957F;&#xFF0C;&#x800C;&#x4E14;&#x5F88;&#x591A;&#x5C0F;&#x7684;&#x95EE;&#x9898;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x7531;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x8FDB;&#x884C;&#x8986;&#x76D6;&#x3002;</p>
+<p><img src="../assets/import3.png" alt=""></p>
+<h3 id="&#x6301;&#x7EED;&#x4EA4;&#x4ED8;&#x7684;&#x6982;&#x5FF5;&#x548C;&#x4EA7;&#x751F;"><a name="&#x6301;&#x7EED;&#x4EA4;&#x4ED8;&#x7684;&#x6982;&#x5FF5;&#x548C;&#x4EA7;&#x751F;" class="anchor-navigation-ex-anchor" href="#&#x6301;&#x7EED;&#x4EA4;&#x4ED8;&#x7684;&#x6982;&#x5FF5;&#x548C;&#x4EA7;&#x751F;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x6301;&#x7EED;&#x4EA4;&#x4ED8;&#x7684;&#x6982;&#x5FF5;&#x548C;&#x4EA7;&#x751F;" class="plugin-anchor" href="#&#x6301;&#x7EED;&#x4EA4;&#x4ED8;&#x7684;&#x6982;&#x5FF5;&#x548C;&#x4EA7;&#x751F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6301;&#x7EED;&#x4EA4;&#x4ED8; </h3>
+<p>&#x968F;&#x7740;&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x4E0E;&#x5BB9;&#x5668;&#x865A;&#x62DF;&#x5316;&#x6280;&#x672F;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#x7684;&#x516C;&#x53F8;&#x5F00;&#x59CB;&#x4F7F;&#x7528;&#x6301;&#x7EED;&#x96C6;&#x6210;&#x7684;&#x7CFB;&#x7EDF;&#x6765;&#x89E3;&#x51B3;&#x9891;&#x7E41;&#x53D1;&#x5E03;&#x5E26;&#x6765;&#x7684;&#x8D28;&#x91CF;&#x95EE;&#x9898;&#xFF0C;&#x4F7F;&#x7528;&#x6301;&#x7EED;&#x4EA4;&#x4ED8;&#x7684;&#x5DE5;&#x5177;&#x6765;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x5728;&#x4E0D;&#x540C;&#x73AF;&#x5883;&#x4E0A;&#x7684;&#x81EA;&#x52A8;&#x90E8;&#x7F72;&#x3002;</p>
+<p>&#x6301;&#x7EED;&#x4EA4;&#x4ED8;&#x8981;&#x6C42;&#x56E2;&#x961F;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x7684;&#x53D1;&#x5E03;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x51C6;&#x786E;&#x7248;&#x672C;&#xFF0C;&#x800C;&#x4E14;&#x8981;&#x6C42;&#x5728;&#x7F16;&#x8BD1;&#x53D1;&#x5E03;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#xFF0C;&#x901A;&#x8FC7;&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#x53EF;&#x4EE5;&#x53CA;&#x65F6;&#x7684;&#x53D1;&#x73B0;&#x5E76;&#x5B9A;&#x4F4D;&#x5B58;&#x5728;&#x7684;bug&#xFF0C;&#x4FEE;&#x590D;bug&#x4E4B;&#x540E;&#x518D;&#x8FDB;&#x884C;&#x5FEB;&#x901F;&#x7684;&#x53D1;&#x5E03;&#x5230;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#xFF0C;&#x6D4B;&#x8BD5;&#x56E2;&#x961F;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#x3002;</p>
+<p>&#x4E0E;&#x4F20;&#x7EDF;&#x6A21;&#x5F0F;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x6301;&#x7EED;&#x4EA4;&#x4ED8;&#x53EF;&#x4EE5;&#x63D0;&#x524D;&#x53D1;&#x73B0;bug&#x7684;&#x5B58;&#x5728;&#x548C;&#x5FEB;&#x901F;&#x4FEE;&#x590D;&#x800C;&#x4E0D;&#x5FC5;&#x7B49;&#x5230;&#x6D4B;&#x8BD5;&#x4EBA;&#x5458;&#x7684;&#x4ECB;&#x5165;&#x4E4B;&#x540E;&#x624D;&#x53D1;&#x73B0;&#x3002;&#x6301;&#x7EED;&#x4EA4;&#x4ED8;&#x5206;&#x89E3;&#x51FA;&#x6765;&#x5C31;&#x662F;&#x201C;&#x6301;&#x7EED;&#x201D;&#x548C;&#x201C;&#x4EA4;&#x4ED8;&#x201D;&#x3002;</p>
+<ul>
+<li><p><strong>&#x6301;&#x7EED;&#xFF1A;</strong>&#x6301;&#x7EED;&#x8981;&#x6C42;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x3001;&#x4EFB;&#x4F55;&#x60C5;&#x51B5;&#x90FD;&#x80FD;&#x8FDB;&#x884C;&#x51C6;&#x786E;&#x7684;&#x53D1;&#x5E03;&#xFF0C;&#x505A;&#x5230;&#x51C6;&#x786E;&#x7684;&#x53D1;&#x5E03;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x5173;&#x952E;&#x70B9;&#xFF1A;</p>
+<ul>
+<li><p>&#x6301;&#x7EED;&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x4E2A;&#x5468;&#x671F;&#x6027;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x6BCF;&#x5929;&#x7684;&#x67D0;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x67D0;&#x6B21;&#x4EE3;&#x7801;&#x7684;&#x63D0;&#x4EA4;&#xFF0C;&#x6216;&#x8005;&#x67D0;&#x6B21;&#x4EBA;&#x4E3A;&#x89E6;&#x53D1;&#x3002;&#x6240;&#x4EE5;&#x4EBA;&#x5DE5;&#x8FDB;&#x884C;&#x6784;&#x5EFA;&#x662F;&#x4E0D;&#x53EF;&#x80FD;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x81EA;&#x52A8;&#x5316;&#x7684;&#x6784;&#x5EFA;&#xFF0C;&#x81EA;&#x52A8;&#x5316;&#x8981;&#x6C42;&#x6784;&#x5EFA;&#x7684;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;&#x90FD;&#x5FC5;&#x987B;&#x4EE5;&#x811A;&#x672C;&#x7684;&#x5F62;&#x5F0F;&#x8FD0;&#x884C;&#xFF0C;&#x4EE3;&#x7801;&#x68C0;&#x51FA;&#x3001;&#x4EE3;&#x7801;&#x6784;&#x5EFA;&#x3001;&#x5404;&#x6A21;&#x5757;&#x4EE3;&#x7801;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x3001;&#x96C6;&#x6210;&#x6D4B;&#x8BD5;&#x3001;UI&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#x7B49;</p>
+</li>
+<li><p>&#x53D1;&#x5E03;&#x7684;&#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x4E0D;&#x5141;&#x8BB8;&#x662F;&#x5404;&#x4E2A;&#x6A21;&#x5757;&#x5728;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x7F16;&#x8BD1;&#x51FA;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x4F5C;&#x4E3A;&#x4EA4;&#x4ED8;&#xFF0C;&#x800C;&#x8981;&#x6C42;&#x5728;&#x4E00;&#x4E2A;&#x7EAF;&#x51C0;&#x7684;&#x7F16;&#x8BD1;&#x73AF;&#x5883;&#x4E2D;&#x8FDB;&#x884C;&#x6784;&#x5EFA;&#x3002;</p>
+</li>
+<li><p>&#x6784;&#x5EFA;&#x7684;&#x8FC7;&#x7A0B;&#x5E94;&#x8BE5;&#x8981;&#x6C42;&#x6700;&#x5927;&#x53EF;&#x80FD;&#x7684;&#x56FA;&#x5316;&#xFF0C;&#x4F8B;&#x5982;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x6784;&#x5EFA;&#x73AF;&#x5883;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x76F8;&#x5173;&#x7684;&#x4F9D;&#x8D56;&#x7B49;&#x3002;</p>
+</li>
+<li><p>&#x907F;&#x514D;&#x4ECE;&#x7F51;&#x7EDC;&#x83B7;&#x53D6;&#x76F8;&#x5173;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x70B9;&#x4EE5;nodejs&#x4E3A;&#x5F00;&#x53D1;&#x6216;&#x7F16;&#x8BD1;&#x7684;&#x9879;&#x76EE;&#x5C24;&#x5176;&#x91CD;&#x8981;&#xFF0C;&#x5B89;&#x88C5;node&#x7684;&#x4F9D;&#x8D56;&#x5305;&#x603B;&#x662F;&#x4E00;&#x4E2A;&#x6F2B;&#x957F;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x5C31;&#x7B97;&#x6709;&#x56FD;&#x5185;&#x7684;&#x6E90;&#xFF0C;&#x4E00;&#x822C;&#x7684;&#x9879;&#x76EE;&#x4E5F;&#x9700;&#x8981;&#x4E00;&#x4E24;&#x5206;&#x949F;&#x7684;node&#x4F9D;&#x8D56;&#x5305;&#xFF0C;&#x8FD9;&#x4E0D;&#x7B26;&#x5408;&#x5FEB;&#x901F;&#x6784;&#x5EFA;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x4EA4;&#x4ED8;&#xFF1A;</strong>&#x5728;&#x6301;&#x7EED;&#x96C6;&#x6210;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x662F;&#x8F6F;&#x4EF6;&#x7684;&#x4EA4;&#x4ED8;&#x5DE5;&#x4F5C;&#xFF0C;&#x5E38;&#x89C1;&#x7684;&#x4EA4;&#x4ED8;&#x65B9;&#x5F0F;&#x4E00;&#x822C;&#x6709;&#xFF1A;</p>
+<ul>
+<li><p>&#x6E90;&#x4EE3;&#x7801;&#x4EA4;&#x4ED8;: &#x6E90;&#x4EE3;&#x7801;&#x4EA4;&#x4ED8;&#x9700;&#x8981;&#x5C06;&#x6E90;&#x4EE3;&#x7801;&#x4EE5; tar &#x5305;&#x7B49;&#x65B9;&#x5F0F; download &#x5230;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x501F;&#x52A9;&#x7A0B;&#x5E8F;&#x7684;&#x6784;&#x5EFA;&#x811A;&#x672C;&#x53BB;&#x6784;&#x5EFA;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x663E;&#x7136;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4F1A;&#x7ECF;&#x5E38;&#x56E0;&#x670D;&#x52A1;&#x5668;&#x73AF;&#x5883;&#x5DEE;&#x5F02;&#xFF0C;&#x6784;&#x5EFA;&#x73AF;&#x5883;&#x521D;&#x59CB;&#x5316;&#x5931;&#x8D25;&#x7B49;&#x95EE;&#x9898;&#x5BFC;&#x81F4;&#x65E0;&#x6CD5;&#x6784;&#x5EFA;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x3002;&#x4E25;&#x91CD;&#x4F9D;&#x8D56;&#x4E8E;&#x6784;&#x5EFA;&#x811A;&#x672C;&#x7684;&#x5B8C;&#x5907;&#x7A0B;&#x5EA6;&#x3002;</p>
+</li>
+<li><p>Linux &#x6807;&#x51C6;&#x5305;&#x4EA4;&#x4ED8;: &#x5C06;&#x9879;&#x76EE;&#x7684;&#x4F9D;&#x8D56;&#x901A;&#x8FC7; Linux deb &#x6216;&#x8005; rpm &#x6765;&#x7BA1;&#x7406;&#xFF0C;&#x7531;&#x4E8E;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x66F4;&#x7B26;&#x5408; Linux &#x89C4;&#x8303;&#xFF0C;&#x95F4;&#x63A5;&#x7684;&#x63D0;&#x9AD8;&#x4E86;&#x9879;&#x76EE;&#x5728;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x90E8;&#x7F72;&#x7684;&#x6210;&#x529F;&#x7387;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x4ECD;&#x7136;&#x9700;&#x8981;&#x89E3;&#x51B3;&#x5305;&#x51B2;&#x7A81;&#x95EE;&#x9898;&#x3002;</p>
+</li>
+<li><p>&#x865A;&#x62DF;&#x955C;&#x50CF;&#x4EA4;&#x4ED8;: &#x865A;&#x62DF;&#x955C;&#x50CF;&#x4EA4;&#x4ED8;&#x6307;&#x7684;&#x662F;&#x6211;&#x4EEC;&#x5C06;&#x9879;&#x76EE;&#x5728;&#x865A;&#x62DF;&#x673A;&#x91CC;&#x6D4B;&#x8BD5;&#x6210;&#x529F;&#x540E;&#x76F4;&#x63A5;&#x5C06;&#x8BE5;&#x865A;&#x62DF;&#x955C;&#x50CF;&#x90E8;&#x7F72;&#x5230;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x3002;&#x663E;&#x7136;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x90E8;&#x7F72;&#x6210;&#x529F;&#x7387;&#x63A5;&#x8FD1;100%&#x800C;&#x4E14;&#x9694;&#x79BB;&#x6027;&#x597D;&#x3002;&#x4F46;&#x662F;&#x968F;&#x4E4B;&#x800C;&#x6765;&#x7684;&#x95EE;&#x9898;&#x5C31;&#x662F;&#x865A;&#x62DF;&#x955C;&#x50CF;&#x672C;&#x8EAB;&#x5BF9;&#x670D;&#x52A1;&#x5668;&#x8D44;&#x6E90;&#x7684;&#x6D88;&#x8017;&#x3002;</p>
+</li>
+<li><p>docker image &#x4EA4;&#x4ED8;&#xFF1A; docker image &#x4EA4;&#x4ED8;&#x662F;&#x865A;&#x62DF;&#x955C;&#x50CF;&#x4EA4;&#x4ED8;&#x7684;&#x8FDB;&#x4E00;&#x6B65;&#x6F14;&#x8FDB;&#xFF0C;&#x5728;&#x4FDD;&#x8BC1;&#x7CFB;&#x7EDF;&#x9694;&#x79BB;&#x7684;&#x540C;&#x65F6;&#xFF0C;docker image &#x5BF9;&#x670D;&#x52A1;&#x5668;&#x7684;&#x8D44;&#x6E90;&#x6D88;&#x8017;&#x66F4;&#x4F4E;&#x3002;&#x5F53;&#x7136;&#xFF0C;docker &#x7684;&#x9694;&#x79BB;&#x673A;&#x5236;&#x662F;&#x8FDB;&#x7A0B;&#x7EA7;&#x522B;&#x7684;&#xFF0C;&#x53EF;&#x80FD;&#x4E0D;&#x9002;&#x5408;&#x4E00;&#x4E9B;&#x5F3A;&#x9694;&#x79BB;&#x573A;&#x666F;&#x3002;&#x6211;&#x4EEC;&#x56E2;&#x961F;&#x76EE;&#x524D;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x4EA4;&#x4ED8;&#x3002;</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&#x4E0B;&#x56FE;&#x5C55;&#x793A;&#x4E86;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;CI/CD&#x7684;&#x5DE5;&#x5177;&#x94FE;&#xFF0C;Jenkins&#x4F5C;&#x4E3A;&#x4E1A;&#x5185;&#x4F18;&#x79C0;&#x7684;&#x7684;CI/CD&#x5DE5;&#x5177;&#xFF0C;&#x62C5;&#x4EFB;&#x6574;&#x5957;&#x4E86;&#x5DE5;&#x5177;&#x94FE;&#x7684;&#x6838;&#x5FC3;&#x7EC4;&#x7EC7;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p><img src="../assets/58f3b593-06a6-4c28-b579-2dc73d5d1dfc.png" alt=""></p>
+<h3 id="ci&#x3001;cd&#x7684;&#x5B9E;&#x8DF5;&#x65B9;&#x6848;"><a name="ci&#x3001;cd&#x7684;&#x5B9E;&#x8DF5;&#x65B9;&#x6848;" class="anchor-navigation-ex-anchor" href="#ci&#x3001;cd&#x7684;&#x5B9E;&#x8DF5;&#x65B9;&#x6848;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="ci&#x3001;cd&#x7684;&#x5B9E;&#x8DF5;&#x65B9;&#x6848;" class="plugin-anchor" href="#ci&#x3001;cd&#x7684;&#x5B9E;&#x8DF5;&#x65B9;&#x6848;"><i class="fa fa-link" aria-hidden="true"></i></a>CI&#x3001;CD<strong>&#x7684;&#x5B9E;&#x8DF5;&#x65B9;&#x6848;</strong></h3>
+<p>&#x5728;&#x6301;&#x7EED;&#x96C6;&#x6210;&#x65B9;&#x9762;&#x9009;&#x62E9;Jenkins&#x3002;Jenkins&#x662F;&#x4E00;&#x6B3E;&#x5F00;&#x6E90;&#x8F6F;&#x4EF6;&#xFF0C;&#x62E5;&#x6709;&#x4F17;&#x591A;&#x4F18;&#x79C0;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x4F9D;&#x9760;&#x8FD9;&#x4E9B;&#x63D2;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x4E00;&#x4E9B;&#x5468;&#x671F;&#x3001;&#x7E41;&#x7410;&#x3001;&#x590D;&#x6742;&#x7684;&#x4EFB;&#x52A1;&#x3002;&#x867D;&#x7136;Jenkins&#x89E3;&#x51B3;&#x4E86;&#x6211;&#x4EEC;&#x7E41;&#x7410;&#x590D;&#x6742;&#x5468;&#x671F;&#x6027;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x89E3;&#x51B3;&#x6211;&#x4EEC;&#x5728;&#x591A;&#x79CD;&#x73AF;&#x5883;&#x4E0B;&#x7F16;&#x8BD1;&#x6784;&#x5EFA;&#x7684;&#x9700;&#x6C42;&#x3002;&#x800C;&#x8FD9;&#x4E2A;&#x573A;&#x666F;&#x6B63;&#x662F;Docker&#x7684;&#x5F3A;&#x9879;&#x3002;</p>
+<p>&#x901A;&#x8FC7;Jenkins&#x7684;pipeline&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x68C0;&#x51FA;&#x3001;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x3001;&#x7F16;&#x8BD1;&#x3001;&#x6784;&#x5EFA;&#x3001;&#x53D1;&#x5E03;&#x3001;&#x6D4B;&#x8BD5;&#x7B49;&#x6D41;&#x7A0B;&#x7684;&#x81EA;&#x52A8;&#x5316;&#xFF0C;&#x800C;&#x6700;&#x7EC8;&#x901A;&#x8FC7;Jenkins&#x7684;Docker&#x63D2;&#x4EF6;&#x5C06;&#x4EA7;&#x51FA;&#x7269;&#x6784;&#x5EFA;&#x6210;&#x955C;&#x50CF;&#xFF0C;&#x65B9;&#x4FBF;&#x90E8;&#x7F72;&#x5230;Docker&#x73AF;&#x5883;&#x3002;</p>
+<p>&#x5728;&#x6301;&#x7EED;&#x4EA4;&#x4ED8;&#x4E2D;&#x9009;&#x62E9;&#x4E86;Docker image&#x7684;&#x4EA4;&#x4ED8;&#x65B9;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;Docker&#x6709;&#x4EE5;&#x4E0B;&#x4F18;&#x70B9;&#x3002;</p>
+<ul>
+<li><p>Docker&#x5F3A;&#x5927;&#x7684;&#x73AF;&#x5883;&#x9694;&#x79BB;&#x6027;&#x53EF;&#x4EE5;&#x5C06;&#x73AF;&#x5883;&#x548C;&#x7A0B;&#x5E8F;&#x6253;&#x5305;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x6D4B;&#x8BD5;&#x3001;&#x8FD0;&#x7EF4;&#x4EBA;&#x5458;&#x65E0;&#x9700;&#x77E5;&#x9053;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x662F;&#x5982;&#x4F55;&#x914D;&#x7F6E;&#x7684;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x4E00;&#x6761;Docker &#x7684;&#x547D;&#x4EE4;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8D77;&#x6765;&#xFF0C;&#x8FD9;&#x4E5F;&#x66F4;&#x52A0;&#x5BB9;&#x6613;&#x5B9E;&#x73B0;&#x6301;&#x7EED;&#x90E8;&#x7F72;&#x3002;</p>
+</li>
+<li><p>&#x51CF;&#x5C11;&#x7F16;&#x8BD1;&#x73AF;&#x5883;&#x7684;&#x6C61;&#x67D3;&#xFF0C;&#x56E0;&#x4E3A;Docker&#x5929;&#x7136;&#x7684;&#x9694;&#x79BB;&#x6027;&#xFF0C;&#x4E5F;&#x907F;&#x514D;&#x4E86;&#x4F20;&#x7EDF;&#x7F16;&#x8BD1;&#x73AF;&#x5883;&#x96BE;&#x4EE5;&#x914D;&#x7F6E;&#x591A;&#x5957;&#x7F16;&#x8BD1;&#x73AF;&#x5883;&#x7684;&#x95EE;&#x9898;&#x3002;&#x5728;&#x57FA;&#x4E8E;Docker&#x7684;&#x6301;&#x7EED;&#x53D1;&#x5E03;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x540C;&#x4E00;&#x53F0;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x540C;&#x65F6;&#x7F16;&#x8BD1;&#x4E0D;&#x540C;&#x7248;&#x672C;&#x7684;Java&#x9879;&#x76EE;&#xFF0C;&#x4E0D;&#x540C;&#x7248;&#x672C;&#x7684;Python&#x9879;&#x76EE;&#xFF0C;&#x800C;&#x65E0;&#x9700;&#x4EFB;&#x4F55;&#x914D;&#x7F6E;&#xFF0C;&#x955C;&#x50CF;&#x4E5F;&#x53EA;&#x662F;&#x4ECE;docker hub&#x4E2D;&#x83B7;&#x53D6;&#x3002;</p>
+</li>
+</ul>
+<p>&#x6301;&#x7EED;&#x96C6;&#x6210;&#x6784;&#x5EFA;&#x7684;docker &#x955C;&#x50CF;&#x7ECF;&#x5386;&#x4E86;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#xFF0C;&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#xFF0C;&#x4F46;&#x8FD8;&#x6CA1;&#x6709;&#x63A5;&#x53D7;&#x8FC7;&#x6D4B;&#x8BD5;&#x56E2;&#x961F;&#x7684;&#x4E25;&#x683C;&#x6D4B;&#x8BD5;&#x3002;Jenkins&#x662F;&#x4E00;&#x4E2A;&#x5F3A;&#x5927;&#x7684;&#x6301;&#x7EED;&#x96C6;&#x6210;&#x5DE5;&#x5177;&#xFF0C;&#x7136;&#x800C;&#x6301;&#x7EED;&#x90E8;&#x7F72;&#x5E76;&#x4E0D;&#x662F;Jenkins&#x7684;&#x5F3A;&#x9879;&#xFF0C;&#x4F46;&#x662F;Jenkins&#x62E5;&#x6709;&#x5F88;&#x591A;&#x5F3A;&#x5927;&#x7684;&#x63D2;&#x4EF6;&#x3002;&#x800C;&#x4E14;&#x6211;&#x4EEC;&#x6301;&#x7EED;&#x96C6;&#x6210;&#x4EA7;&#x51FA;&#x7684;&#x662F;docker&#x955C;&#x50CF;&#xFF0C;&#x6240;&#x4EE5;&#x6301;&#x7EED;&#x90E8;&#x7F72;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5C06;&#x955C;&#x50CF;&#x8FD0;&#x884C;&#x8D77;&#x6765;&#xFF0C;&#x6216;&#x8005;&#x5229;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x5BB9;&#x5668;&#x7BA1;&#x7406;&#x5E73;&#x53F0;&#x63D0;&#x4F9B;&#x7684;API&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#x3002;</p>
+<ul>
+<li><p>&#x672C;&#x5730;&#x90E8;&#x7F72;&#x5E94;&#x7528;&#x5230;Docker&#xFF1A;&#x672C;&#x5730;&#x90E8;&#x7F72;&#x5230;Docker&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Jenkins&#x7684;docker&#x63D2;&#x4EF6;</p>
+</li>
+<li><p>&#x90E8;&#x7F72;&#x5230;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;&#x7684;Docker&#x3001;Appsoar&#xFF1A;Docker&#x548C;Appsoar&#x90FD;&#x652F;&#x6301;&#x5F00;&#x542F;API&#x8C03;&#x7528;&#x3002;&#x901A;&#x8FC7;&#x73B0;&#x6709;&#x7684;API&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x6211;&#x4EEC;&#x751F;&#x6210;&#x955C;&#x50CF;&#x7248;&#x672C;&#x3002;&#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x6301;&#x7EED;&#x7684;&#x90E8;&#x7F72;&#x6700;&#x65B0;&#x7248;&#x672C;&#x3002;</p>
+</li>
+<li><p>&#x90E8;&#x7F72;&#x5230;kubernetes&#xFF1A;kubernetes&#x9664;&#x4E86;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;API&#x8C03;&#x7528;&#x8FD8;&#x53EF;&#x4EE5;&#x5728;jenkins&#x4E2D;&#x914D;&#x7F6E;kubectl&#x7684;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x6216;&#x66F4;&#x65B0;deployments&#x3002;</p>
+</li>
+</ul>
+<h3 id="&#x57FA;&#x4E8E;dokcer&#x3001;jenkins&#x7684;cicd&#x7684;&#x5B9E;&#x73B0;"><a name="&#x57FA;&#x4E8E;dokcer&#x3001;jenkins&#x7684;cicd&#x7684;&#x5B9E;&#x73B0;" class="anchor-navigation-ex-anchor" href="#&#x57FA;&#x4E8E;dokcer&#x3001;jenkins&#x7684;cicd&#x7684;&#x5B9E;&#x73B0;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x57FA;&#x4E8E;dokcer&#x3001;jenkins&#x7684;cicd&#x7684;&#x5B9E;&#x73B0;" class="plugin-anchor" href="#&#x57FA;&#x4E8E;dokcer&#x3001;jenkins&#x7684;cicd&#x7684;&#x5B9E;&#x73B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x57FA;&#x4E8E;Dokcer&#x3001;Jenkins&#x7684;CI/CD&#x7684;&#x5B9E;&#x73B0;</h3>
+<p>&#x4E0B;&#x56FE;&#x5C55;&#x793A;&#x4E86;&#x4E00;&#x4E2A;&#x7B80;&#x6613;&#x5B9E;&#x73B0;&#x7684;CI/CD&#x6D41;&#x7A0B;&#xFF0C;&#x57FA;&#x4E8E;docker&#x548C;Jenkins&#xFF1A;</p>
+<p><img src="../assets/import2.png" alt="">&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x4E0A;&#x56FE;&#x7684;CI/CD&#x6D41;&#x7A0B;&#xFF0C;&#x9700;&#x8981;&#x642D;&#x5EFA;<code>Jenkins master</code>&#x670D;&#x52A1;&#x5668;&#x3001;&#x79C1;&#x6709;&#x7684;<code>Docker registry</code>&#x3001;<code>Git</code>&#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x800C;&#x8A00;&#xFF0C;&#x76F8;&#x6BD4;&#x4F20;&#x7EDF;&#x53D1;&#x5E03;&#xFF0C;&#x9700;&#x8981;&#x65B0;&#x589E;&#x5DE5;&#x4F5C;&#x5185;&#x5BB9;&#x662F;&#x5728;&#x4EE3;&#x7801;&#x76EE;&#x5F55;&#x4E2D;&#x65B0;&#x589E;<code>Dockerfile</code>&#x548C;<code>Jenkinsfile</code>&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x3002;<code>Dockerfile</code>&#x7528;&#x4E8E;&#x5E94;&#x7528;&#x53D1;&#x5E03;&#x65F6;&#x6784;&#x5EFA;&#x5E94;&#x7528;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#xFF0C;<code>Jenkinsfile</code>&#x7528;&#x4E8E;<code>Jenkins pipeline</code>&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="jenkins-master-node.html" class="navigation navigation-next " aria-label="Next page: Jenkins master node">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"基于Docker及Jenkins的CI/CD的实现","level":"1.2","depth":1,"next":{"title":"Jenkins master node","level":"1.2.1","depth":2,"path":"part-ii/jenkins-master-node.md","ref":"part-ii/jenkins-master-node.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-livereload","search-plus","prism","prism-themes","anchors","-include-codeblock","emphasize","splitter","sectionx","anchor-navigation-ex","todo","-disqus"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prism-themes/themes/prism-atom-dark.css"]},"disqus":{"shortName":"laniakea"},"emphasize":{},"todo":{},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"sectionx":{"tag":"b"},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"isRewritePageTitle":false,"showLevel":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism-themes":{},"include-codeblock":{"template":"ace","unindent":true,"edit":true},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"anchors":{},"search-plus":{}},"theme":"default","author":"jrr","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Implement CI/CD with Docker and Jenkins","language":"zh-hans","output.name":"site","gitbook":"*","description":"利用Docker及Jenkins Pipeline实现微服务的CI/CD"},"file":{"path":"part-ii/ji-yu-docker-ji-jenkins-de-ci-cd-de-shi-xian.md","mtime":"2017-10-12T09:40:08.441Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-12T09:43:27.670Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sectionx/sectionx.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

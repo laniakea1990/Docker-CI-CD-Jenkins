@@ -10,11 +10,23 @@ Pipeline的几个基本概念：
 
 * Node: 节点，一个Node就是一个Jenkins节点，或者是Master，或者是Agent，是执行Step的具体运行期环境。
 
-* Step: 步骤，Step是最基本的操作单元，小到创建一个目录，大到构建一个Docker镜像，由各类Jenkins Plugin提供。
+* Step: 步骤，Step是最基本的操作单元，小到创建一个目录，大到构建一个Docker镜像，由各类Jenkins Plugin提供
 
-本节介绍Jenkins Pipeline的一些核心概念，并介绍在运行的Jenkins实例中定义和使用Pipelines的基础知识。
+
+
+![](/assets/import9.png)
 
 ### **创建Pipeline**
+
+Pipeline脚本是用Groovy写的 。Groovy语法将在后续文档中介绍。
+
+可以通过以下任一方式创建基本Pipeline：
+
+* pipeline script：直接在Web UI的script输入框里面输入pipeline script语句即可，参考说明可以点击输入框下边的Pipeline Syntax，里面有很多示例操作说明，非常好用。
+
+* pipeline script from SCM：需要配置SCM代码存储Git地址或SVN地址，指定script文件Jenkinsfile所在路径，每次构建job会自动去指定的目录执行script文件
+
+以上两种方法定义Pipeline的语法都是一样的。
 
 基于前面安装的Jenkins master，进入jenkins主页：[http://192.168.139.132:8088/](http://192.168.139.132:8088/)，点击左边菜单的新建选项：
 

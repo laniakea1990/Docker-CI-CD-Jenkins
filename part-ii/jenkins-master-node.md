@@ -75,7 +75,7 @@ CONTAINER ID        IMAGE                  COMMAND                  CREATED     
 
 #### ![](/assets/import4.png)其他补充
 
-Docker宣布在1.12版的引擎中内置编排能力，也就是 Swarm Mode，在容器之上引入了服务\(`service`\)的概念，也实验性的推出了应用栈\(`stack`\)来支持多服务应用的部署管理。但是 Docker 1.12 版本，服务的开发和操作缺乏类似`Docker Compose`工具的支持，而且由于Docker Compose v1/v2是面向容器编排设计，和Swarm Mode中的概念上有很多不同。只可以用 `docker-compose bundle` 命令将已有 `docker-compose.yml` 转换为 [`Distributed Application Bundle`](https://docs.docker.com/compose/bundles/) 才能在Swarm mode中部署，非常不便，而且更为严重的是很多功能不支持，导致很多现有编排模板无法直接使用。
+Docker在1.12版的引擎中内置编排能力，也就是 Swarm Mode，在容器之上引入了服务\(`service`\)的概念，也实验性的推出了应用栈\(`stack`\)来支持多服务应用的部署管理。但是 Docker 1.12 版本，服务的开发和操作缺乏类似`Docker Compose`工具的支持，而且由于Docker Compose v1/v2是面向容器编排设计，和Swarm Mode中的概念上有很多不同。只可以用 `docker-compose bundle` 命令将已有 `docker-compose.yml` 转换为 [`Distributed Application Bundle`](https://docs.docker.com/compose/bundles/) 才能在Swarm mode中部署，非常不便，而且更为严重的是很多功能不支持，导致很多现有编排模板无法直接使用。
 
 在2017年1月发布的 Docker 1.13版本中，Swarm mode迅速成熟，相应的工具支持也进一步完善。 Docker Compose[v3 规范](https://docs.docker.com/compose/compose-file/)，已经全面支持 Swarm mode 概念。而且从 1.13 开始，Docker 命令行工具支持直接使用 v3 版本的 `docker-compose.yml` 文件来进行应用栈\(`stack`\)部署管理，这大大简化了容器编排使用的复杂性。
 

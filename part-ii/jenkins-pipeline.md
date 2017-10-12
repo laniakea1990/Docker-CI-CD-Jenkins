@@ -84,6 +84,57 @@ Pipeline最基本的部分是“step”。基本上，step告诉Jenkins 要做�
 
 Pipeline支持两种语法：Declarative Pipeline（在Pipeline 2.5中引入，结构化方式）和Scripted Pipeline，两者都支持建立连续输送的Pipeline。
 
+#### Declarative Pipeline
+
+Declarative Pipeline是Jenkins Pipeline 的一个相对较新的补充， 它在Pipeline子系统之上提出了一种更为简化和有意义的语法。
+
+所有有效的Declarative Pipeline必须包含在一个pipeline块内，例如：
+
+```
+pipeline {
+    /* insert Declarative Pipeline here */
+}
+```
+
+Declarative Pipeline中的基本语句和表达式遵循与Groovy语法相同的规则 ，但有以下例外：
+
+* Pipeline的顶层必须是块，具体来说是：pipeline { }
+* 没有分号作为语句分隔符。每个声明必须在自己的一行
+* 块只能包含Sections, Directives, Steps或赋值语句。
+* 属性引用语句被视为无参方法调用。所以例如，输入被视为input（）
+
+例子：
+
+```
+Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any 
+
+    stages {
+        stage('Build') { 
+            steps { 
+                sh 'make' 
+            }
+        }
+        stage('Test'){
+            steps {
+                sh 'make check'
+                junit 'reports/**/*.xml' 
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'make publish'
+            }
+        }
+    }
+}
+```
+
+#### Scripted Pipeline
+
+Scripted pipeline是基于groovy的一种DSL语言，所以与Declarative pipeline相比为jenkins用户提供了更巨大的灵活性和可扩展性。
+
 ### 
 
 

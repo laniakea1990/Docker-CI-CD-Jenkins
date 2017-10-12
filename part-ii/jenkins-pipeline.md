@@ -133,9 +133,43 @@ pipeline {
 
 #### Scripted Pipeline
 
-Scripted pipeline是基于groovy的一种DSL语言，所以与Declarative pipeline相比为jenkins用户提供了更巨大的灵活性和可扩展性。
+Scripted pipeline是基于groovy的一种DSL语言，与Declarative pipeline相比为jenkins用户提供了更巨大的灵活性和可扩展性。
 
-### 
+例子：
+
+```
+Jenkinsfile (Scripted Pipeline)
+node {
+    stage('Build') {
+        sh 'make'
+    }
+
+    stage('Test') {
+        sh 'make check'
+        junit 'reports/**/*.xml'
+    }
+
+    stage('Deploy') {
+        sh 'make publish'
+    }
+}
+```
+
+#### Declarative pipeline和Scripted pipeline的比较
+
+共同点：
+
+两者都是pipeline代码的持久实现，都能够使用pipeline内置的插件或者插件提供的steps，两者都可以利用共享库扩展。
+
+区别：
+
+两者不同之处在于语法和灵活性。Declarative pipeline对用户来说，语法更严格，有固定的组织结构，更容易生成代码段，使其成为用户更理想的选择。但是Scripted pipeline更加灵活，因为Groovy本身只能对结构和语法进行限制，对于更复杂的pipeline来说，用户可以根据自己的业务进行灵活的实现和扩展。
+
+### 参考
+
+[https://jenkins.io/doc/book/pipeline/getting-started/](https://jenkins.io/doc/book/pipeline/getting-started/)
+
+[https://jenkins.io/doc/book/pipeline/syntax/](https://jenkins.io/doc/book/pipeline/syntax/)
 
 
 

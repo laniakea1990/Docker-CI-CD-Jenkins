@@ -22,8 +22,6 @@ Pipeline脚本是用Groovy写的，可以通过以下任一方式创建基本Pip
 
 * pipeline script from SCM：需要配置SCM代码存储Git地址或SVN地址，指定script文件Jenkinsfile所在路径，每次构建job会自动去指定的目录执行script文件
 
-以上两种方法定义Pipeline的语法都是一样的。
-
 基于前面安装的Jenkins master，进入jenkins主页：[http://192.168.139.132:8088/](http://192.168.139.132:8088/)，点击左边菜单的新建选项：
 
 ![](/assets/import6.png)

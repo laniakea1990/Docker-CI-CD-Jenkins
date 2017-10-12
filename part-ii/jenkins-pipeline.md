@@ -12,15 +12,11 @@ Pipeline的几个基本概念：
 
 * Step: 步骤，Step是最基本的操作单元，小到创建一个目录，大到构建一个Docker镜像，由各类Jenkins Plugin提供
 
-
-
 ![](/assets/import9.png)
 
 ### **创建Pipeline**
 
-Pipeline脚本是用Groovy写的 。Groovy语法将在后续文档中介绍。
-
-可以通过以下任一方式创建基本Pipeline：
+Pipeline脚本是用Groovy写的，可以通过以下任一方式创建基本Pipeline：
 
 * pipeline script：直接在Web UI的script输入框里面输入pipeline script语句即可，参考说明可以点击输入框下边的Pipeline Syntax，里面有很多示例操作说明，非常好用。
 
@@ -38,7 +34,17 @@ Pipeline脚本是用Groovy写的 。Groovy语法将在后续文档中介绍。
 
 进入项目的配置页面，首先配置项目的自动触发：
 
-![](/assets/import7.png)接着，配置Pipeline script的来源，这里选择从git中获取：
+##### ![](/assets/import7.png)
+
+##### **在Web UI中定义Pipeline**
+
+接下来就是配置Pipeline script，可以选择直接在页面中填写pipeline script：
+
+![](/assets/import10.png)**在SCM中定义pipeline**
+
+复杂的Pipeline难以在Pipeline配置页面的文本区域内进行写入和维护。为了解决这一问题，jenkins Pipeline支持在文本编辑器中编写脚本文件jenkinsFile，Jenkins可以通过从SCM选项的控件中加载Pipeline脚本。
+
+选择SCM选项中的Pipeline脚本后，不要在Jenkins UI中输入任何Groovy代码; 只需指定要检索的Pipeline脚本的路径。更新指定的存储库时，只要Pipeline配置了SCM轮询触发器，就会触发一个新构建。
 
 ![](/assets/import8.png)
 

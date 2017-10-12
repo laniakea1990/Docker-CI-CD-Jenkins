@@ -48,35 +48,7 @@ Pipeline脚本是用Groovy写的，可以通过以下任一方式创建基本Pip
 
 选择SCM选项中的Pipeline脚本后，不要在Jenkins UI中输入任何Groovy代码; 只需指定要检索的Pipeline脚本的路径。更新指定的存储库时，只要Pipeline配置了SCM轮询触发器，就会触发一个新构建。
 
-### ![](/assets/import8.png)Jenkinsfile样例
-
-```
-//push to private registry
-node {
-   stage('Check out source code') { // for display purposes
-      // Get some code from a GitHub repository
-      git 'https://github.com/raiseking/docker-hello-world.git'
-   }
-   stage('Build and push docker image'){
-       docker.withRegistry('http://192.168.139.129:5000/') {
-            docker.image('maven:3.5-alpine').inside('-v $HOME/.m2:/root/.m2') {
-                // Run the maven build
-                sh "mvn clean package"
-            }
-            def customImage = docker.build("192.168.139.129:5000/docker-cicd:${env.BUILD_ID}")
-            customImage.push()
-       }
-   }
-
-   stage('Deploy with docker image') {
-      echo "Deploy artifact image to docker env."
-      docker.withRegistry('http://192.168.139.129:5000/') {
-            sh "docker pull 192.168.139.129:5000/docker-cicd:${env.BUILD_ID}"
-            sh "docker run -d -p 8888:8080 192.168.139.129:5000/docker-cicd:${env.BUILD_ID}"
-       }
-   }
-}
-```
+### ![](/assets/import8.png)
 
 ### Pipeline语法
 
@@ -165,11 +137,39 @@ node {
 
 两者不同之处在于语法和灵活性。Declarative pipeline对用户来说，语法更严格，有固定的组织结构，更容易生成代码段，使其成为用户更理想的选择。但是Scripted pipeline更加灵活，因为Groovy本身只能对结构和语法进行限制，对于更复杂的pipeline来说，用户可以根据自己的业务进行灵活的实现和扩展。
 
+### Jenkinsfile样例
+
+```
+//push to private registry
+node {
+   stage('Check out source code') { // for display purposes
+      // Get some code from a GitHub repository
+      git 'https://github.com/raiseking/docker-hello-world.git'
+   }
+   stage('Build and push docker image'){
+       docker.withRegistry('http://192.168.139.129:5000/') {
+            docker.image('maven:3.5-alpine').inside('-v $HOME/.m2:/root/.m2') {
+                // Run the maven build
+                sh "mvn clean package"
+            }
+            def customImage = docker.build("192.168.139.129:5000/docker-cicd:${env.BUILD_ID}")
+            customImage.push()
+       }
+   }
+
+   stage('Deploy with docker image') {
+      echo "Deploy artifact image to docker env."
+      docker.withRegistry('http://192.168.139.129:5000/') {
+            sh "docker pull 192.168.139.129:5000/docker-cicd:${env.BUILD_ID}"
+            sh "docker run -d -p 8888:8080 192.168.139.129:5000/docker-cicd:${env.BUILD_ID}"
+       }
+   }
+}
+```
+
 ### 参考
 
 [https://jenkins.io/doc/book/pipeline/getting-started/](https://jenkins.io/doc/book/pipeline/getting-started/)
 
 [https://jenkins.io/doc/book/pipeline/syntax/](https://jenkins.io/doc/book/pipeline/syntax/)
-
-
 

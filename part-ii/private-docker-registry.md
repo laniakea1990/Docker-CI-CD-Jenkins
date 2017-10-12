@@ -7,11 +7,15 @@ Docker提供了开放的中央仓库dockerhub，同时也允许我们使用regis
 
 #### 下载 registry 镜像
 
-`docker pull registry`
+```
+docker pull registry
+```
 
 #### 启动容器
 
-`docker run -d --name registry-jrr -p 5000:5000 --restart=always -v /opt/data/registry:/tmp/registry registry`
+```
+docker run -d --name registry-jrr -p 5000:5000 --restart=always -v /opt/data/registry:/tmp/registry registry
+```
 
 简单解释：
 
@@ -104,6 +108,4 @@ docker run -d -it -p 8080:8080 --restart=always --name registry-web-console --li
 ## 其他
 
 此处的私有仓库还没有把用户认证模块加进去，后面继续改进
-
-
 

@@ -40,7 +40,9 @@ Pipeline脚本是用Groovy写的，可以通过以下任一方式创建基本Pip
 
 接下来就是配置Pipeline script，可以选择直接在页面中填写pipeline script：
 
-![](/assets/import10.png)**在SCM中定义pipeline**
+##### ![](/assets/import10.png)
+
+##### **在SCM中定义pipeline**
 
 复杂的Pipeline难以在Pipeline配置页面的文本区域内进行写入和维护。为了解决这一问题，jenkins Pipeline支持在文本编辑器中编写脚本文件jenkinsFile，Jenkins可以通过从SCM选项的控件中加载Pipeline脚本。
 

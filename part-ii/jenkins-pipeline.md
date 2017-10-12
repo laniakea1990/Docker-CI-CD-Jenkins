@@ -38,7 +38,7 @@ Pipeline脚本是用Groovy写的，可以通过以下任一方式创建基本Pip
 
 ##### **在Web UI中定义Pipeline**
 
-接下来就是配置Pipeline script，可以选择直接在页面中填写pipeline script：
+在Pipeline配置页面的文本区域内，输入Pipeline script：
 
 ##### ![](/assets/import10.png)
 
@@ -48,9 +48,7 @@ Pipeline脚本是用Groovy写的，可以通过以下任一方式创建基本Pip
 
 选择SCM选项中的Pipeline脚本后，不要在Jenkins UI中输入任何Groovy代码; 只需指定要检索的Pipeline脚本的路径。更新指定的存储库时，只要Pipeline配置了SCM轮询触发器，就会触发一个新构建。
 
-![](/assets/import8.png)
-
-### Jenkinsfile样例
+### ![](/assets/import8.png)Jenkinsfile样例
 
 ```
 //push to private registry
@@ -79,6 +77,14 @@ node {
    }
 }
 ```
+
+### Pipeline语法
+
+Pipeline最基本的部分是“step”。基本上，step告诉Jenkins 要做什么，并且作为Declarative Pipeline和Scripted Pipeline语法的基本构建块。
+
+Pipeline支持两种语法：Declarative Pipeline（在Pipeline 2.5中引入，结构化方式）和Scripted Pipeline，两者都支持建立连续输送的Pipeline。
+
+### 
 
 
 
